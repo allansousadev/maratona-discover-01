@@ -9,6 +9,8 @@
     --color-td-expense: #e92929;
     --background-page: #f0f2f5;
     --color-link: #3dd705;
+    --color-modal-overlay: rgba(0,0,0, 0.7);
+    --color-modal: #F0F2f5;
 }
 
 * {
@@ -53,10 +55,42 @@ a:hover {
     color: var(--color-total);
 }
 
+button {
+    width: 100%;
+    height: 50px;
+    border: none;
+    color: var(--color-white);
+    background: var(--color-total);
+    padding: 0;
+    border-radius: 0.25rem;
+    cursor: pointer;
+}
+
+button:hover {
+    background: var(--color-td-income);
+}
+
 .button.new {
     display: inline-block;
     margin-bottom: 1.8rem;
 
+}
+
+.button.cancel {
+    color: var(--color-td-expense);
+    border: 2px var(--color-td-expense) solid;
+    border-radius: 0.25rem;
+    height: 50px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0.6;
+}
+
+.button.cancel:hover {
+    opacity: 1;
 }
 
 /* Titles ============== */
@@ -70,7 +104,7 @@ h2 {
 /* Header ============== */
 header {
     background: var(--color-header);
-    padding: 2rem 0 10rem;
+    padding: 5rem 0 10rem;
     text-align: center;
 }
 
@@ -121,6 +155,12 @@ header {
 }
 
 /* Tables ============== */
+#transaction {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+}
+
 #data-table {
     width: 100%;
     border-spacing: 0 0.5rem;
@@ -166,6 +206,72 @@ td.income {
 
 td.expense {
     color: var(--color-td-expense);
+}
+
+/* Modal ============== */
+.modal-overlay {
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-modal-overlay);
+    position: fixed;
+    top: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;
+    visibility: hidden;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal {
+    background: var(--color-modal);
+    border-radius: 1.10rem;
+    padding: 2.4rem;
+    position: relative;
+
+    max-width: 500px;
+    width: 90%;
+}
+
+/* Form ============== */
+#form {
+    max-width: 500px;
+}
+
+#form h2 {
+    margin-top: 0;
+}
+
+input {
+    border: none;
+    border-radius: 0.2rem;
+    padding: 0.8rem;
+}
+
+.input-group {
+    margin-top: 0.8rem;
+    width: 100%;
+}
+
+.input-group small {
+    opacity: 0.4;
+}
+
+.input-group.actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input-group.actions .button,
+.input-group.actions button {
+    width: 48%;  
 }
 
 /* Footer ============== */
